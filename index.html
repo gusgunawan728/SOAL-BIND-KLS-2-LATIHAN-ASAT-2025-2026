@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASAT Bahasa Indonesia Kelas 2 SD</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+padding:20px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.header{
+background:white;
+border-radius:25px;
+padding:25px;
+text-align:center;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+margin-bottom:20px;
+}
+
+.header h1{
+font-size:3rem;
+color:#ff4b5c;
+}
+
+.header h2{
+color:#2196f3;
+margin-top:10px;
+}
+
+.banner{
+width:100%;
+border-radius:20px;
+margin-top:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.card h3{
+color:#ff5722;
+margin-bottom:10px;
+}
+
+.option{
+display:block;
+padding:10px;
+margin:8px 0;
+background:#f5f5f5;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.option:hover{
+background:#d9f0ff;
+}
+
+button{
+background:#4caf50;
+color:white;
+border:none;
+padding:15px 30px;
+font-size:18px;
+border-radius:15px;
+cursor:pointer;
+margin-top:30px;
+}
+
+button:hover{
+background:#388e3c;
+}
+
+.result{
+margin-top:20px;
+background:white;
+padding:20px;
+border-radius:20px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+}
+
+.footer{
+margin-top:20px;
+text-align:center;
+color:white;
+font-size:18px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>📚 ASAT Bahasa Indonesia</h1>
+<h2>Kelas 2 SD</h2>
+
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200"
+class="banner">
+</div>
+
+<form id="quiz">
+
+<div class="grid">
+
+<div class="card">
+<h3>1. Kalimat dengan tanda koma yang benar adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q1" value="A">
+Saya membeli buku pensil dan penggaris
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="B">
+Saya membeli buku, pensil, dan penggaris
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="C">
+Saya membeli buku pensil, dan penggaris
+</label>
+</div>
+
+<div class="card">
+<h3>2. Tanda koma digunakan untuk...</h3>
+
+<label class="option">
+<input type="radio" name="q2" value="A">
+Huruf dan angka
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="B">
+Unsur-unsur dalam daftar
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="C">
+Judul dan isi
+</label>
+</div>
+
+<div class="card">
+<h3>3. Kelompok kata nama hewan adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q3" value="A">
+Kucing, ayam, sapi
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="B">
+Meja, kursi, lemari
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="C">
+Merah, hijau, kuning
+</label>
+</div>
+
+<div class="card">
+<h3>4. Kelompok kata nama buah adalah...</h3>
+
+<label class="option">
+<input type="radio" name="q4" value="A">
+Mangga, kursi, apel
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="B">
+Jeruk, apel, pisang
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="C">
+Buku, mangga, meja
+</label>
+</div>
+
+<div class="card">
+<h3>5. Saat menerima bantuan teman kita mengucapkan...</h3>
+
+<label class="option">
+<input type="radio" name="q5" value="A">
+Permisi
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="B">
+Terima kasih
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="C">
+Tolong
+</label>
+</div>
+
+</div>
+
+<div style="text-align:center">
+<button type="button" onclick="cekNilai()">
+🎯 Lihat Nilai
+</button>
+</div>
+
+</form>
+
+<div id="hasil" class="result"></div>
+
+<div class="footer">
+🌟 Semangat Belajar dan Raih Nilai Terbaik! 🌟
+</div>
+
+</div>
+
+<script>
+
+function cekNilai(){
+
+const kunci={
+q1:"B",
+q2:"B",
+q3:"A",
+q4:"B",
+q5:"B"
+};
+
+let skor=0;
+
+for(let soal in kunci){
+
+let jawaban=document.querySelector(
+`input[name="${soal}"]:checked`
+);
+
+if(jawaban && jawaban.value===kunci[soal]){
+skor+=20;
+}
+
+}
+
+document.getElementById("hasil").innerHTML=
+"🎉 Nilai Kamu: <br><span style='font-size:40px;color:#4CAF50'>"+
+skor+
+"</span>";
+
+}
+</script>
+
+</body>
+</html>
